@@ -18,6 +18,8 @@
     "astro": "^4.1.1",
     "hast-util-select": "^6.0.2",
     "hastscript": "^8.0.0",
+    "retext": "^9.0.0",
+    "retext-smartypants": "^6.1.0",
     "tailwindcss": "^3.4.1",
     "unist-util-visit": "^5.0.0"
   },
