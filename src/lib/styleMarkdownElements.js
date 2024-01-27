@@ -11,7 +11,7 @@ const wideImages = {
     if (parent.tagName !== "p" || parent.children.length > 1) return;
 
     // Turn the parent <p> into a full-width container <div>
-    parent.tagName = "div"
+    parent.tagName = "div";
     parent.properties.className ||= [];
     parent.properties.className.push(
       "w-[100vw]",
@@ -23,10 +23,7 @@ const wideImages = {
 
     // Center the <img> and give it rounded corners
     node.properties.className ||= [];
-    node.properties.className.push(
-      "mx-auto",
-      "lg:rounded-2xl",
-    );
+    node.properties.className.push("mx-auto", "lg:rounded-2xl");
   },
 };
 
@@ -46,7 +43,7 @@ const fullWidthCodeBlocks = {
 
     // Wrap the inner <code> with a container div
     node.children = [
-      h("div", { className: ["max-w-2xl", "mx-auto"] }, node.children)
+      h("div", { className: ["max-w-2xl", "mx-auto"] }, node.children),
     ];
   },
 };
@@ -58,15 +55,15 @@ export default function styleMarkdownElements() {
     let matchingTransform;
 
     const findMatchingSelector = (node) => {
-      const found = transforms.find(obj => obj.selector(node))
-      if (found) matchingTransform = found.transform
+      const found = transforms.find((obj) => obj.selector(node));
+      if (found) matchingTransform = found.transform;
       return !!found;
     };
 
     const runMatchingTransform = (node, index, parent) => {
       matchingTransform(node, index, parent);
-    }
+    };
 
     visit(tree, findMatchingSelector, runMatchingTransform);
-  }
+  };
 }
