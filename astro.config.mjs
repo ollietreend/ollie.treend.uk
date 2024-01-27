@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
-import fullWidthCodeBlocks from "./src/lib/fullWidthCodeBlocks";
+import styleMarkdownElements from "./src/lib/styleMarkdownElements";
 import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
@@ -10,6 +10,6 @@ export default defineConfig({
     assets: "assets"
   },
   markdown: {
-    rehypePlugins: [fullWidthCodeBlocks]
+    rehypePlugins: [styleMarkdownElements]
   }
 });
