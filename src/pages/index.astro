@@ -1,8 +1,11 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "@src/layouts/BaseLayout.astro";
 import Link from "@src/components/Link.astro";
 import Ollie from "@src/components/Ollie.astro";
 import SocialLinks from "@src/components/SocialLinks.astro";
+
+const postsExist = !!(await getCollection("posts"));
 ---
 
 <BaseLayout title="Ollie Treend">
@@ -18,10 +21,14 @@ import SocialLinks from "@src/components/SocialLinks.astro";
       worked in other government departments too, including at the Government
       Digital Service on <Link href="https://www.gov.uk">GOV.UK</Link>.
     </p>
-    <p class="text-xl leading-relaxed my-6">
-      Occasionally,
-      <Link href="/posts">I write things here</Link>.
-    </p>
+    {
+      postsExist && (
+        <p class="text-xl leading-relaxed my-6">
+          Occasionally,
+          <Link href="/posts">I write things here</Link>.
+        </p>
+      )
+    }
     <h2 class="text-2xl my-6 mt-10">Where to find me</h2>
     <SocialLinks />
   </div>
