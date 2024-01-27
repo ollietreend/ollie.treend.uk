@@ -2,7 +2,7 @@
 import BaseLayout from "@src/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import MarkdownEntry from "@src/components/MarkdownEntry.astro";
-import Ollie from "@src/components/Ollie.astro";
+import HomepageLink from "@src/components/HomepageLink.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("posts");
@@ -19,10 +19,7 @@ const formattedDate = date.toLocaleDateString("en-GB", { dateStyle: "long" });
 
 <BaseLayout {title}>
   <div class="max-w-2xl mx-auto my-12 mb-24">
-    <a href="/" class="my-12">
-      <Ollie class="max-w-32 hover:scale-125 transition-transform" />
-    </a>
-
+    <HomepageLink />
     <h1 class="text-4xl my-6 leading-normal">{title}</h1>
     <p class="my-6 text-lg text-stone-500">{formattedDate}</p>
     <MarkdownEntry {entry} />
