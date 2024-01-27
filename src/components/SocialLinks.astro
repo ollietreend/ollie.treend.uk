@@ -1,0 +1,44 @@
+---
+import SocialLink from "@src/components/SocialLink.astro";
+const links = [
+  {
+    title: "Twitter",
+    icon: "twitter",
+    url: "https://twitter.com/OllieTreend",
+  },
+  {
+    title: "Mastodon",
+    icon: "mastodon",
+    url: "https://twitter.com/OllieTreend",
+  },
+  {
+    title: "Last.fm",
+    icon: "lastfm",
+    url: "https://www.last.fm/user/olivertreend",
+  },
+  {
+    title: "GitHub",
+    icon: "github",
+    url: "https://twitter.com/OllieTreend",
+  },
+  {
+    title: "Instagram",
+    icon: "instagram",
+    url: "https://twitter.com/OllieTreend",
+  },
+  {
+    title: "LinkedIn",
+    icon: "linkedin",
+    url: "https://twitter.com/OllieTreend",
+  },
+  {
+    title: "Email",
+    icon: "email",
+    url: "https://twitter.com/OllieTreend",
+  },
+];
+---
+
+<nav class="flex flex-wrap gap-5">
+  {links.map((link) => <SocialLink {...link} />)}
+</nav>
