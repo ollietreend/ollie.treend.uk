@@ -1,0 +1,13 @@
+---
+import Link from "@src/components/Link.astro";
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Render specific HTML elements as Astro components
+const components = { a: Link };
+---
+
+<div class="prose prose-stone prose-lg dark:prose-invert">
+  <Content {components} />
+</div>

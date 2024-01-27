@@ -10,6 +10,7 @@ export default defineConfig({
     assets: "assets"
   },
   markdown: {
-    rehypePlugins: [styleMarkdownElements]
+    rehypePlugins: [styleMarkdownElements],
+    shikiConfig: { theme: "monokai" },
   }
 });

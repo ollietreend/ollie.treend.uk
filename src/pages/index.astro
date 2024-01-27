@@ -1,29 +1,31 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
-import ollie from "../images/ollie.jpg";
+import Link from "@src/components/Link.astro";
+import Ollie from "@src/components/Ollie.astro";
 ---
 
 <BaseLayout title="Ollie Treend">
   <div class="m-8 max-w-lg mx-auto">
-    <Image
-      src={ollie}
-      width={600}
-      height={600}
-      alt=""
-      loading="eager"
-      class="rounded-full border-4 border-stone-300 max-w-48 mx-auto"
-    />
+    <Ollie class="max-w-48" />
 
-    <h1 class="text-5xl my-8">👋🏻 Hi there</h1>
-    <p class="text-2xl my-8">
+    <h1 class="text-5xl leading-relaxed my-8">👋🏻 Hi there</h1>
+    <p class="text-2xl leading-relaxed my-8">
       My name is Ollie Treend. I’m a software engineer living in London, UK.
     </p>
-    <p class="text-2xl my-8">
-      I currently work at the Department for Education as a tech lead.
+    <p class="text-2xl leading-relaxed my-8">
+      I currently work at the Department for Education as a tech lead. Before
+      that I worked at the Government Digital Service on <Link
+        href="https://www.gov.uk"
+      >
+        GOV.UK
+      </Link>.
+      <p class="text-2xl leading-relaxed my-8">
+        <Link href="/posts" class="text-2xl leading-relaxed">
+          Things I’ve written about
+        </Link>
+      </p>
+      <h2 class="text-3xl">Get in touch</h2>
+      <nav></nav>
     </p>
-
-    <h2 class="text-3xl">Get in touch</h2>
-    <nav></nav>
   </div>
 </BaseLayout>

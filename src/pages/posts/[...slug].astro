@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "@src/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import MarkdownEntry from "@src/components/MarkdownEntry.astro";
+import Ollie from "@src/components/Ollie.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("posts");
@@ -11,33 +13,18 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
 const { title, date } = entry.data;
 const formattedDate = date.toLocaleDateString("en-GB", { dateStyle: "long" });
-
-import { Image } from "astro:assets";
-import ollie from "@src/images/ollie.jpg";
 ---
 
 <BaseLayout {title}>
-  <div class="max-w-2xl my-12 mx-auto flex justify-center">
-    <a href="/">
-      <Image
-        src={ollie}
-        width={600}
-        height={600}
-        alt=""
-        loading="eager"
-        class="rounded-full border-4 border-stone-300 max-w-32 hover:scale-125 transition-transform"
-      />
+  <div class="max-w-2xl mx-auto my-12 mb-24">
+    <a href="/" class="my-12">
+      <Ollie class="max-w-32 hover:scale-125 transition-transform" />
     </a>
-  </div>
 
-  <div class="max-w-2xl mx-auto my-12">
-    <h1 class="text-4xl my-6">{title}</h1>
+    <h1 class="text-4xl my-6 leading-normal">{title}</h1>
     <p class="my-6 text-lg text-stone-500">{formattedDate}</p>
-    <div class="prose prose-stone prose-lg">
-      <Content />
-    </div>
+    <MarkdownEntry {entry} />
   </div>
 </BaseLayout>

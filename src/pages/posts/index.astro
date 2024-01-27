@@ -1,0 +1,37 @@
+---
+import BaseLayout from "@src/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+import Link from "@src/components/Link.astro";
+import Ollie from "@src/components/Ollie.astro";
+
+// All posts, sorted by date (newest first)
+const allPosts = (await getCollection("posts")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="Posts by Ollie Treend">
+  <div class="max-w-lg mx-auto my-12">
+    <a href="/" class="my-12">
+      <Ollie class="max-w-32 hover:scale-125 transition-transform" />
+    </a>
+    <h1 class="text-4xl my-6">Things I’ve written about</h1>
+    <div class="">
+      <ul>
+        {
+          allPosts.map((post) => (
+            <li class="my-6">
+              <Link
+                href={`/posts/${post.slug}/`}
+                class="text-2xl leading-relaxed"
+              >
+                {post.data.title}
+              </Link>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</BaseLayout>
