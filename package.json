@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/mdx": "^2.0.3",
     "@astrojs/tailwind": "^5.1.0",
+    "@fontsource-variable/cabin": "^5.0.17",
     "@tailwindcss/typography": "^0.5.10",
     "astro": "^4.1.1",
     "hast-util-select": "^6.0.2",
