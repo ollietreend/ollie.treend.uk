@@ -5,27 +5,16 @@ import { getCollection } from "astro:content";
 import Link from "@src/components/Link.astro";
 import HomepageLink from "@src/components/HomepageLink.astro";
 import PageHeading from "@src/components/PageHeading.astro";
+import PostsList from "@src/components/PostsList.astro";
 
 // All posts, sorted by date (newest first)
-const allPosts = (await getCollection("posts")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
+const posts = await getCollection("posts");
 ---
 
 <BaseLayout title="Posts by Ollie Treend">
   <div class="max-w-lg mx-auto">
     <HomepageLink />
     <PageHeading>Things I’ve written</PageHeading>
-    <ul>
-      {
-        allPosts.map((post) => (
-          <li class="my-6">
-            <Link href={`/posts/${post.slug}/`} class="text-xl leading-relaxed">
-              {post.data.title}
-            </Link>
-          </li>
-        ))
-      }
-    </ul>
+    {!!posts && <PostsList {posts} />}
   </div>
 </BaseLayout>

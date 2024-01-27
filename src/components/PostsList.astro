@@ -1,0 +1,19 @@
+---
+import Link from "./Link.astro";
+
+// Sort posts by date (newest first)
+let posts = Astro.props.posts || [];
+posts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<ul>
+  {
+    posts.map((post) => (
+      <li class="my-6">
+        <Link href={`/posts/${post.slug}/`} class="text-xl leading-relaxed">
+          {post.data.title}
+        </Link>
+      </li>
+    ))
+  }
+</ul>
