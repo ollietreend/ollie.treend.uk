@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 
 import Link from "@src/components/Link.astro";
 import HomepageLink from "@src/components/HomepageLink.astro";
+import PageHeading from "@src/components/PageHeading.astro";
 
 // All posts, sorted by date (newest first)
 const allPosts = (await getCollection("posts")).sort(
@@ -12,24 +13,19 @@ const allPosts = (await getCollection("posts")).sort(
 ---
 
 <BaseLayout title="Posts by Ollie Treend">
-  <div class="max-w-lg mx-auto my-12">
+  <div class="max-w-lg mx-auto">
     <HomepageLink />
-    <h1 class="text-4xl my-6">Things I’ve written</h1>
-    <div class="">
-      <ul>
-        {
-          allPosts.map((post) => (
-            <li class="my-6">
-              <Link
-                href={`/posts/${post.slug}/`}
-                class="text-2xl leading-relaxed"
-              >
-                {post.data.title}
-              </Link>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+    <PageHeading>Things I’ve written</PageHeading>
+    <ul>
+      {
+        allPosts.map((post) => (
+          <li class="my-6">
+            <Link href={`/posts/${post.slug}/`} class="text-xl leading-relaxed">
+              {post.data.title}
+            </Link>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </BaseLayout>

@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "@src/layouts/BaseLayout.astro";
 import MarkdownEntry from "@src/components/MarkdownEntry.astro";
 import HomepageLink from "@src/components/HomepageLink.astro";
+import PageHeading from "@src/components/PageHeading.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("posts");
@@ -18,10 +19,10 @@ const formattedDate = date.toLocaleDateString("en-GB", { dateStyle: "long" });
 ---
 
 <BaseLayout {title}>
-  <div class="max-w-2xl mx-auto my-12 mb-24">
+  <div class="max-w-2xl mx-auto">
     <HomepageLink />
-    <h1 class="text-4xl my-6 leading-normal">{title}</h1>
-    <p class="my-6 text-xl text-stone-500">{formattedDate}</p>
+    <PageHeading>{title}</PageHeading>
+    <p class="my-6 text-lg text-stone-500 text-left">{formattedDate}</p>
     <MarkdownEntry {entry} />
   </div>
 </BaseLayout>
