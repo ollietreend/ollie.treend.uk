@@ -2,46 +2,32 @@ import { matches } from "hast-util-select";
 import { visit } from "unist-util-visit";
 import { h } from "hastscript";
 
-const wideImageClassNames = [
-  "w-[100vw]",
-  "ml-[50%]",
-  "-translate-x-[50%]",
-  "max-w-5xl",
-  "mx-auto",
-  "lg:rounded-xl",
-];
-
 const transforms = [
   // Make images wider than the article container
   // This applies to images embedded using Markdown syntax `![]()`
+  // that are standalone (i.e. not surrounded by paragraph text)
   {
     selector: (node) => matches("img", node),
-    transform: (node) => {
-      // Make the <img> wide
+    transform: (node, index, parent) => {
+      if (parent.tagName !== "p" || parent.children.length > 1) return;
+
+      // Turn the parent <p> into a full-width container <div>
+      parent.tagName = "div"
+      parent.properties.className ||= [];
+      parent.properties.className.push(
+        "w-[100vw]",
+        "max-w-5xl",
+        "ml-[50%]",
+        "-translate-x-[50%]",
+        "mx-auto"
+      );
+
+      // Center the <img> and give it rounded corners
       node.properties.className ||= [];
-      node.properties.className.push(...wideImageClassNames);
-    },
-  },
-
-  // Make <img> tags wider than the article container
-  // This applies to <img> tags written into the Markdown
-  {
-    // HTML written in MDX counts as a "mdxJsxFlowElement" rather than a regular "element"
-    // Otherwise we'd be able to use "matches" from "hast-util-select" for this selector
-    selector: (node) => (node.type == "mdxJsxFlowElement" && node.name == "img"),
-    transform: (node) => {
-      let classAttr = node.attributes.find(attr => attr.name == "class");
-      if (classAttr == undefined) {
-        classAttr = {
-          type: "mdxJsxAttribute",
-          name: "class",
-          value: "",
-        }
-        node.attributes.push(classAttr);
-      }
-
-      if (classAttr.value) classAttr.value += " "
-      classAttr.value += wideImageClassNames.join(" ");
+      node.properties.className.push(
+        "mx-auto",
+        "lg:rounded-2xl"
+      );
     },
   },
 
@@ -75,8 +61,8 @@ export default function styleMarkdownElements() {
       return !!found;
     };
 
-    const runMatchingTransform = (node) => {
-      matchingTransform(node);
+    const runMatchingTransform = (node, index, parent) => {
+      matchingTransform(node, index, parent);
     }
 
     visit(tree, findMatchingSelector, runMatchingTransform);
