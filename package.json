@@ -12,10 +12,12 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^2.0.3",
+    "@astrojs/sitemap": "^3.0.5",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/cabin": "^5.0.17",
     "@tailwindcss/typography": "^0.5.10",
     "astro": "^4.1.1",
+    "astro-robots-txt": "^1.0.0",
     "hast-util-select": "^6.0.2",
     "hastscript": "^8.0.0",
     "retext": "^9.0.0",
