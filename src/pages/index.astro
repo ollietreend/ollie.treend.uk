@@ -1,11 +1,11 @@
 ---
-import { getCollection } from "astro:content";
+import collectionExists from "@src/lib/collectionExists";
 import BaseLayout from "@src/layouts/BaseLayout.astro";
 import Link from "@src/components/Link.astro";
 import Ollie from "@src/components/Ollie.astro";
 import SocialLinks from "@src/components/SocialLinks.astro";
 
-const postsExist = !!(await getCollection("posts"));
+const postsExist = collectionExists("posts");
 ---
 
 <BaseLayout title="Ollie Treend">
