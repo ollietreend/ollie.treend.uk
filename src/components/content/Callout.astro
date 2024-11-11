@@ -1,0 +1,36 @@
+---
+const calloutTypes = {
+  default: {
+    title: false,
+    class: "border-stone-300 dark:border-stone-500",
+  },
+  note: {
+    title: "Note",
+    titleClass: "text-blue-600 dark:text-blue-400",
+    class: "border-blue-500",
+  },
+  warning: {
+    title: "Warning",
+    titleClass: "text-amber-600 dark:text-amber-500",
+    class: "border-amber-500",
+  },
+};
+
+const calloutType = calloutTypes[Astro.props.type || "default"];
+
+const containerClass = [
+  "border-l-4 my-8 py-3 pl-5",
+  "[&_*:first-child]:mt-0 [&_*:last-child]:mb-0",
+  calloutType.class,
+];
+
+const headerClass = ["font-serif text-3xl", calloutType.titleClass];
+---
+<section class:list={containerClass}>
+  {
+    calloutType.title && (
+      <header class:list={headerClass}>{calloutType.title}</header>
+    )
+  }
+  <slot />
+</section>

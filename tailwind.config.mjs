@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Cabin Variable", ...defaultTheme.fontFamily.sans],
+        serif: ["EB Garamond", ...defaultTheme.fontFamily.serif],
       },
     },
   },

@@ -1,7 +1,6 @@
 ---
-// Cabin font: https://fontsource.org/fonts/cabin
-import "@fontsource-variable/cabin";
-import "@fontsource-variable/cabin/wght-italic.css";
+// Cabin font: https://fontsource.org/fonts/eb-garamond
+import "@fontsource/eb-garamond";
 
 const { title } = Astro.props.frontmatter || Astro.props;
 ---
@@ -14,7 +13,7 @@ const { title } = Astro.props.frontmatter || Astro.props;
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title}</title>
   </head>
-  <body class="m-6 my-12 bg-stone-50 dark:bg-stone-800 dark:text-stone-300">
+  <body class="m-6 my-12 mb-36 bg-stone-50 dark:bg-stone-900 dark:text-stone-300">
     <slot />
   </body>
 </html>

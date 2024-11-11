@@ -1,5 +1,5 @@
 ---
-import Link from "./Link.astro";
+import Link from "@src/components/content/Link.astro";
 import { Image } from "astro:assets";
 const getIcon = async (name) =>
   (await import(`../images/icons/${name}.svg`)).default;

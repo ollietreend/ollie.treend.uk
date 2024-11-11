@@ -2,7 +2,6 @@
 import { z, defineCollection } from "astro:content";
 import formatText from "@src/lib/formatText";
 
-
 // Define a `type` and `schema` for each collection
 const posts = defineCollection({
   type: "content",

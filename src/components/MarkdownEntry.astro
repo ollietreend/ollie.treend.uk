@@ -1,13 +1,28 @@
 ---
-import Link from "@src/components/Link.astro";
+import Callout from "@src/components/content/Callout.astro";
+import Link from "@src/components/content/Link.astro";
+import SectionBreak from "@src/components/content/SectionBreak.astro";
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content, components } = await entry.render();
 
-// Render specific HTML elements as Astro components
-const components = { a: Link };
+const renderComponents = {
+  ...components,
+  a: Link,
+  hr: SectionBreak,
+  Callout,
+};
+
+const proseClass = [
+  "prose prose-stone prose-lg",
+  "dark:prose-invert",
+  "prose-headings:font-serif prose-headings:font-normal",
+  "prose-h1:text-5xl",
+  "prose-h2:border-b-4 prose-h2:text-4xl prose-h2:border-stone-200 dark:prose-h2:border-stone-700",
+  "prose-h3:text-3xl",
+  "prose-blockquote:border-stone-300 prose-blockquote:dark:border-stone-500"
+];
 ---
-
-<div class="prose prose-stone prose-lg dark:prose-invert">
-  <Content {components} />
+<div class:list={proseClass}>
+  <Content components={renderComponents} />
 </div>

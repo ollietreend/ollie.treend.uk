@@ -38,7 +38,8 @@ const fullWidthCodeBlocks = {
       "-translate-x-[50%]",
       "rounded-none",
       "dark:contrast-[1.15]",
-      "dark:brightness-90",
+      "dark:brightness-75",
+      "dark:hue-rotate-[340deg]",
     );
 
     // Wrap the inner <code> with a container div
