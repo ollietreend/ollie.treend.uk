@@ -14,11 +14,11 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { title, date } = entry.data;
+const { title, date, description } = entry.data;
 const formattedDate = date.toLocaleDateString("en-GB", { dateStyle: "long" });
 ---
 
-<BaseLayout {title}>
+<BaseLayout {title} {description}>
   <div class="max-w-2xl mx-auto">
     <HomepageLink />
     <article>
