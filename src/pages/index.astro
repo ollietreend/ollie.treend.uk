@@ -4,6 +4,7 @@ import BaseLayout from "@src/layouts/BaseLayout.astro";
 import Link from "@src/components/content/Link.astro";
 import Ollie from "@src/components/Ollie.astro";
 import SocialLinks from "@src/components/SocialLinks.astro";
+import PageHeading from "@src/components/PageHeading.astro";
 
 const postsExist = collectionExists("posts");
 ---
@@ -11,7 +12,7 @@ const postsExist = collectionExists("posts");
 <BaseLayout title="Ollie Treend">
   <div class="max-w-lg mx-auto">
     <Ollie class="max-w-48" />
-    <h1 class="text-4xl leading-relaxed my-6">👋🏻 Hi there</h1>
+    <PageHeading>👋🏻 Hi there</PageHeading>
     <p class="text-2xl leading-relaxed my-6">
       My name is Ollie Treend. I’m a software engineer living in London, UK.
     </p>
@@ -28,7 +29,7 @@ const postsExist = collectionExists("posts");
         </p>
       )
     }
-    <h2 class="text-2xl my-6 mt-10">Where to find me</h2>
+    <h2 class="text-3xl my-6 mt-10 font-serif">Where to find me</h2>
     <SocialLinks />
   </div>
 </BaseLayout>

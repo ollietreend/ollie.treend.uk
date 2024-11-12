@@ -14,7 +14,7 @@ const posts = await getCollection("posts");
 <BaseLayout title="Posts by Ollie Treend">
   <div class="max-w-lg mx-auto">
     <HomepageLink />
-    <PageHeading>Things I’ve written</PageHeading>
+    <PageHeading>Some things I’ve written</PageHeading>
     {!!posts && <PostsList {posts} />}
   </div>
 </BaseLayout>
