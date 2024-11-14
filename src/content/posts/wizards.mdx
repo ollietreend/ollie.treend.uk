@@ -5,7 +5,7 @@ description: How we implemented multi-step forms (wizards) in Ruby on Rails, wit
 ---
 
 <Callout type="note">
-This post has been adapted from [an architectural decision record I wrote][adr] while working at the UK Department for Education.
+This post was adapted from an [architectural decision record][adr] I wrote while working at the UK Department for Education.
 
 My team needed to implement various multi-step forms in our Ruby on Rails application. This was the output of an investigation I carried out.
 </Callout>
@@ -98,7 +98,7 @@ By separating wizards from the controllers that implement them, we'd open up the
 
 ## The responsibilities of a wizard
 
-We have defined the following boundaries for controllers, wizards and steps:
+We defined the following boundaries for controllers, wizards and steps:
 
 ### Controller
 
@@ -129,13 +129,18 @@ Concerned with individual fields and questions, and validating the user's input.
 - Coupled to a view partial which renders the form
 - May contain helper or decorator methods used by the view partial
 
-## A pattern for implementing Wizards
+## A pattern for implementing wizards
 
-Given all of the above, we have come up with a pattern for implementing wizards in our application. It loosely follows the structure of the DfE Wizard gem, where wizards and steps are standalone classes. But it stores its state in the session, and the wizard itself is responsible for the user's journey through the form.
+Given all of the above, we came up with a pattern for implementing wizards in our application. It loosely follows the structure of the DfE Wizard gem, where wizards and steps are standalone classes. But it stores its state in the session, and the wizard itself is responsible for the user's journey through the form.
 
-For a concrete implementation, see this pull request which establishes the pattern and implements an "Add placement" wizard:
+### Can I use it in my own Ruby on Rails project?
 
-https://github.com/DFE-Digital/itt-mentor-services/pull/810
+Of course! One of the great things about digital services created by the UK government is that [the source code must be public][14].
+
+For a concrete implementation, see this pull request which establishes the pattern and implements an "Add placement" wizard:  
+[DFE-Digital/itt-mentor-services#810][15]
+
+I also [documented the pattern][16] to help developers in my team create new wizards in future.
 
 ### When will this become a gem?
 
@@ -155,3 +160,6 @@ Never! 😄 This pattern suits our needs, but it comes with its own set of opini
 [11]: https://govuk-form-builder.netlify.app
 [12]: https://github.com/DFE-Digital/govuk-wizardry/blob/3283ac9eb9d453a354cfa5e93a00572bc27e29ef/README.md
 [13]: https://design-system.service.gov.uk
+[14]: https://www.gov.uk/service-manual/technology/making-source-code-open-and-reusable
+[15]: https://github.com/DFE-Digital/itt-mentor-services/pull/810
+[16]: https://github.com/DFE-Digital/itt-mentor-services/blob/a803dc98545c17cdac3c3bda9c8aea88be721986/docs/conventions/wizards.md
