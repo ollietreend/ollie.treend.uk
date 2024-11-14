@@ -2,14 +2,17 @@
 // Cabin font: https://fontsource.org/fonts/eb-garamond
 import "@fontsource/eb-garamond";
 
+import favicon from "@src/images/favicon.svg";
+import faviconMask from "@src/images/favicon-mask.svg";
+
 const { title, description } = Astro.props;
 ---
 
 <html lang="en-GB">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.svg" />
-    <link rel="mask-icon" href="/favicon-mask.svg" color="#000" />
+    <link rel="icon" href={favicon.src} />
+    <link rel="mask-icon" href={faviconMask.src} color="#000" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
