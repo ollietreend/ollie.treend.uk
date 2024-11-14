@@ -6,9 +6,16 @@ const getIcon = async (name) =>
 
 const { title, url } = Astro.props;
 const icon = await getIcon(Astro.props.icon);
+
+const linkClass = [
+  "text-xl flex gap-2 items-center",
+  "hover:ring-4 focus:ring-4",
+  "hover:ring-yellow-400 focus:ring-yellow-400",
+  "dark:hover:ring-yellow-500 dark:focus:ring-yellow-500",
+];
 ---
 
-<Link href={url} class="text-xl flex gap-2 items-center">
+<Link href={url} class:list={linkClass}>
   <Image src={icon} alt="" class="w-8" />
   {title}
 </Link>
