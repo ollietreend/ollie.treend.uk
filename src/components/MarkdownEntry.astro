@@ -2,6 +2,9 @@
 import Callout from "@src/components/content/Callout.astro";
 import Link from "@src/components/content/Link.astro";
 import SectionBreak from "@src/components/content/SectionBreak.astro";
+import Heading1 from "@src/components/content/Heading1.astro";
+import Heading2 from "@src/components/content/Heading2.astro";
+import Heading3 from "@src/components/content/Heading3.astro";
 
 const { entry } = Astro.props;
 const { Content, components } = await entry.render();
@@ -10,16 +13,15 @@ const renderComponents = {
   ...components,
   a: Link,
   hr: SectionBreak,
+  h1: Heading1,
+  h2: Heading2,
+  h3: Heading3,
   Callout,
 };
 
 const proseClass = [
   "prose prose-stone prose-lg",
   "dark:prose-invert",
-  "prose-headings:font-serif prose-headings:font-normal",
-  "prose-h1:text-4xl prose-h1:sm:text-5xl prose-h1:leading-tight",
-  "prose-h2:text-3xl prose-h2:sm:text-4xl prose-h2:leading-snug prose-h2:border-b-4 prose-h2:border-stone-200 dark:prose-h2:border-stone-700",
-  "prose-h3:text-2xl prose-h3:sm:text-3xl prose-h3:leading-normal",
   "prose-blockquote:border-stone-300 prose-blockquote:dark:border-stone-500",
 ];
 ---

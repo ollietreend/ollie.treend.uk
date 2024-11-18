@@ -2,10 +2,9 @@
 import BaseLayout from "@src/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-import Link from "@src/components/content/Link.astro";
 import HomepageLink from "@src/components/HomepageLink.astro";
-import PageHeading from "@src/components/PageHeading.astro";
 import PostsList from "@src/components/PostsList.astro";
+import Heading1 from "@src/components/content/Heading1.astro";
 
 // All posts, sorted by date (newest first)
 const posts = await getCollection("posts");
@@ -14,7 +13,7 @@ const posts = await getCollection("posts");
 <BaseLayout title="Posts by Ollie Treend">
   <div class="max-w-xl mx-auto">
     <HomepageLink />
-    <PageHeading>Things I’ve written</PageHeading>
+    <Heading1>Things I’ve written</Heading1>
     {!!posts && <PostsList {posts} />}
   </div>
 </BaseLayout>

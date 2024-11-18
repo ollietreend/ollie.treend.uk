@@ -1,0 +1,9 @@
+---
+const classes = [
+  "font-serif font-normal",
+  "text-4xl sm:text-5xl leading-tight",
+  "my-6",
+  Astro.props.class,
+];
+---
+<h1 class:list={classes}><slot /></h1>

@@ -1,0 +1,10 @@
+---
+const classes = [
+  "font-serif font-normal",
+  "text-3xl sm:text-4xl leading-snug",
+  "text-slate-900 dark:text-white",
+  "shadow-[inset_0_-4px] shadow-stone-200 dark:shadow-stone-700",
+  Astro.props.class,
+];
+---
+<h2 class:list={classes}><slot /></h2>
