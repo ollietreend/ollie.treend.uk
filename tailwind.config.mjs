@@ -24,7 +24,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ["EB Garamond", ...defaultTheme.fontFamily.serif],
+        serif: ["Crimson Text", ...defaultTheme.fontFamily.serif],
       },
     },
   },
