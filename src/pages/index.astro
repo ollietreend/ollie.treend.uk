@@ -6,6 +6,7 @@ import Ollie from "@src/components/Ollie.astro";
 import SocialLinks from "@src/components/SocialLinks.astro";
 import Heading1 from "@src/components/content/Heading1.astro";
 import Heading2 from "@src/components/content/Heading2.astro";
+import WavingHand from "@src/components/WavingHand.astro";
 
 const postsExist = collectionExists("posts");
 ---
@@ -13,7 +14,7 @@ const postsExist = collectionExists("posts");
 <BaseLayout title="Ollie Treend">
   <div class="max-w-lg mx-auto">
     <Ollie class="max-w-48" />
-    <Heading1>👋🏻 Hi there</Heading1>
+    <Heading1><WavingHand /> Hi there</Heading1>
     <p class="text-xl leading-relaxed my-6">
       My name is Ollie Treend. I’m a software engineer living in London, UK.
     </p>
