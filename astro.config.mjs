@@ -22,9 +22,12 @@ const shieldConfig = {
     enableOnStaticPages: { provider: "netlify" },
     contentSecurityPolicy: {
       cspDirectives: {
-        "default-src": "'none'",
-        "img-src": "'self'",
-        "font-src": "'self'",
+        "default-src": "'self'",
+
+        // Required so the waving hand Easter egg is performant
+        // https://github.com/catdad/canvas-confetti/issues/131#issuecomment-727661873
+        // Skipping 'self' since I don't use any other workers in this project
+        "worker-src": "blob:",
       },
     },
   },
@@ -46,8 +49,6 @@ export default defineConfig({
   },
   markdown: {
     rehypePlugins: [styleMarkdownElements],
-    shikiConfig: {
-      theme: "monokai",
-    },
+    shikiConfig: { theme: "monokai" },
   },
 });
