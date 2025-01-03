@@ -1,6 +1,5 @@
 <script>
   // TODO: Refine the debounce counter
-  // TODO: Reduce the number of confetti explosions, or the number of particles per explosion to improve performance
 
   import confetti from "canvas-confetti";
   import { prefersReducedMotion } from "svelte/motion";
@@ -79,31 +78,18 @@
       y: hand.offsetTop / window.innerHeight,
     };
 
-    const options = {
+    // Hand-fetti 🎉
+    await confetti({
       shapes: [handEmoji],
       scalar,
       flat: true,
       origin,
-      spread: 200,
+      spread: 120,
+      angle: 50,
       particleCount: 20,
-    };
+      useWorker: true,
+    });
 
-    // Hand-fetti 🎉
-    // Multiple explosions with slightly different options to create a layered/parallax effect
-    const explosions = [
-      confetti({ ...options, gravity: 1 }),
-      confetti({ ...options, gravity: 0.8 }),
-      confetti({ ...options, gravity: 0.6 }),
-      confetti({
-        ...options,
-        spread: 150,
-        gravity: 0.8,
-        particleCount: 5,
-        startVelocity: 20,
-      }),
-    ];
-
-    await Promise.all(explosions);
     handIsExploding = false;
   };
 
@@ -114,7 +100,6 @@
 
     intensityCounter.hit();
     const i = intensityCounter.count;
-
     if (successiveAnimations[i - 1]) {
       wave(successiveAnimations[i - 1]);
     } else {
