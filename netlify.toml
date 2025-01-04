@@ -17,6 +17,7 @@ for = "/*"
 X-Frame-Options = "DENY"
 X-Content-Type-Options = "nosniff"
 Referrer-Policy = "no-referrer-when-downgrade"
+Content-Security-Policy = "default-src 'self' 'unsafe-inline'; worker-src 'self' blob:; base-uri 'none'; object-src 'none'"
 
 # Cache static assets for 1 year
 [[headers]]
