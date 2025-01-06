@@ -3,6 +3,13 @@
   navigation: auto;
 }
 
+@media (prefers-reduced-motion) {
+  /* Except for when the user wants reduced motion */
+  @view-transition {
+    navigation: none;
+  }
+}
+
 /* Animate the header image as a standalone transition */
 .header-image {
   view-transition-name: header-image;
