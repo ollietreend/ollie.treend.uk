@@ -17,13 +17,7 @@ if (process.env.NETLIFY && process.env.CONTEXT == "production") {
 // https://astro.build/config
 export default defineConfig({
   site: process.env.URL ?? "http://localhost:4321",
-  integrations: [
-    mdx(),
-    svelte(),
-    tailwind(),
-    sitemap(),
-    robotsTxt({ policy }),
-  ],
+  integrations: [mdx(), svelte(), tailwind(), sitemap(), robotsTxt({ policy })],
   build: {
     assets: "assets",
   },
