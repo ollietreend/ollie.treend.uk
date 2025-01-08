@@ -22,6 +22,7 @@
     "canvas-confetti": "^1.9.3",
     "hast-util-select": "^6.0.2",
     "hastscript": "^8.0.0",
+    "quicklink": "^2.3.0",
     "retext": "^9.0.0",
     "retext-smartypants": "^6.1.0",
     "svelte": "^5.12.0",

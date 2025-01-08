@@ -14,6 +14,7 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <script src="@src/scripts/prefetch-links.js"></script>
   </head>
   <body
     class="m-6 sm:my-12 mb-24 sm:mb-36 bg-stone-50 dark:bg-stone-900 dark:text-stone-300"
