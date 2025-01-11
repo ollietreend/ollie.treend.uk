@@ -5,7 +5,7 @@ import Ollie from "@src/components/Ollie.astro";
 <div class="my-6 sm:my-12 flex justify-center">
   <a
     href="/"
-    class="hover:scale-125 transition-transform rounded-full motion-reduce:hover:transform-none"
+    class="rounded-full transition-transform [@media(hover:hover)]:hover:scale-125 [@media(hover:hover)]:motion-reduce:hover:transform-none"
   >
     <Ollie class="max-w-32" />
     <span class="sr-only">Return to homepage</span>
