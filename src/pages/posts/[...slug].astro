@@ -4,6 +4,7 @@ import BaseLayout from "@src/layouts/BaseLayout.astro";
 import MarkdownEntry from "@src/components/MarkdownEntry.astro";
 import HomepageLink from "@src/components/HomepageLink.astro";
 import Heading1 from "@src/components/content/Heading1.astro";
+import PostComments from "@src/components/PostComments.astro";
 
 export async function getStaticPaths() {
   const blogEntries = (await getCollection("posts")) || [];
@@ -29,5 +30,6 @@ const dateYMD = date.toISOString().split("T")[0];
       </p>
       <MarkdownEntry {entry} />
     </article>
+    <PostComments />
   </div>
 </BaseLayout>
