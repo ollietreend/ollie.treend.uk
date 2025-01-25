@@ -15,7 +15,8 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { title, date, description } = entry.data;
-const formattedDate = date.toLocaleDateString("en-GB", { dateStyle: "long" });
+const dateFormatted = date.toLocaleDateString("en-GB", { dateStyle: "long" });
+const dateYMD = date.toISOString().split("T")[0];
 ---
 
 <BaseLayout {title} {description}>
@@ -23,7 +24,9 @@ const formattedDate = date.toLocaleDateString("en-GB", { dateStyle: "long" });
     <HomepageLink />
     <article>
       <Heading1>{title}</Heading1>
-      <p class="text-md text-stone-500 mt-[-0.5rem]">{formattedDate}</p>
+      <p class="text-md text-stone-500 mt-[-0.5rem]">
+        <time datetime={dateYMD}>{dateFormatted}</time>
+      </p>
       <MarkdownEntry {entry} />
     </article>
   </div>
