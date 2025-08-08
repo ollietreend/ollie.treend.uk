@@ -25,7 +25,7 @@ const dateYMD = date.toISOString().split("T")[0];
     <HomepageLink />
     <article>
       <Heading1>{title}</Heading1>
-      <p class="text-md text-stone-500 mt-[-0.5rem]">
+      <p class="text-md text-stone-500 mt-[-0.5rem] my-8">
         <time datetime={dateYMD}>{dateFormatted}</time>
       </p>
       <MarkdownEntry {entry} />
