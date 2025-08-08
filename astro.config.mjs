@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import styleMarkdownElements from "./src/lib/styleMarkdownElements";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
@@ -17,12 +17,15 @@ if (process.env.NETLIFY && process.env.CONTEXT == "production") {
 // https://astro.build/config
 export default defineConfig({
   site: process.env.URL ?? "http://localhost:4321",
-  integrations: [mdx(), svelte(), tailwind(), sitemap(), robotsTxt({ policy })],
+  integrations: [mdx(), svelte(), sitemap(), robotsTxt({ policy })],
   build: {
     assets: "assets",
   },
   markdown: {
     rehypePlugins: [styleMarkdownElements],
     shikiConfig: { theme: "monokai" },
+  },
+  vite: {
+    plugins: [tailwindcss()],
   },
 });
