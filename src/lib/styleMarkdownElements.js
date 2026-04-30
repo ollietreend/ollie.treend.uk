@@ -44,15 +44,32 @@ const fullWidthCodeBlocks = {
 
     // Wrap the inner <code> with a container div
     node.children = [
-      h("div", { className: ["max-w-2xl", "mx-auto"] }, node.children),
+      h("div", { className: ["max-w-xl", "mx-auto"] }, node.children),
     ];
   },
 };
 
 const transforms = [wideImages, fullWidthCodeBlocks];
 
+// `rehypeShiki` sets `node.properties.class` as a string, but `hast-util-select`
+// reads CSS classes from `node.properties.className` (array). Normalize so that
+// `matches("pre.astro-code", node)` and similar selectors work correctly.
+const normalizeClassNames = (tree) => {
+  visit(tree, "element", (node) => {
+    if (typeof node.properties.class === "string") {
+      node.properties.className ||= [];
+      node.properties.className.push(
+        ...node.properties.class.split(/\s+/).filter(Boolean),
+      );
+      delete node.properties.class;
+    }
+  });
+};
+
 export default function styleMarkdownElements() {
   return (tree) => {
+    normalizeClassNames(tree);
+
     let matchingTransform;
 
     const findMatchingSelector = (node) => {
