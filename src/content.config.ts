@@ -1,10 +1,10 @@
-// Import utilities from `astro:content`
-import { z, defineCollection } from "astro:content";
+import { defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 import formatText from "@src/lib/formatText";
 
-// Define a `type` and `schema` for each collection
 const posts = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/posts" }),
   schema: z.object({
     title: z.string().transform(formatText),
     date: z.date(),
@@ -12,5 +12,4 @@ const posts = defineCollection({
   }),
 });
 
-// Export a single `collections` object to register your collection(s)
 export const collections = { posts };

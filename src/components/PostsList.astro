@@ -10,7 +10,7 @@ posts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   {
     posts.map((post) => (
       <li class="my-6">
-        <Link href={`/posts/${post.slug}/`} class="text-xl leading-relaxed">
+        <Link href={`/posts/${post.id}/`} class="text-xl leading-relaxed">
           {post.data.title}
         </Link>
       </li>
