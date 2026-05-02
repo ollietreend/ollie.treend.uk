@@ -1,39 +1,48 @@
 ---
 import collectionExists from "@src/lib/collectionExists";
 import BaseLayout from "@src/layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 import Link from "@src/components/content/Link.astro";
-import Ollie from "@src/components/Ollie.astro";
 import SocialLinks from "@src/components/SocialLinks.astro";
 import Heading1 from "@src/components/content/Heading1.astro";
 import Heading2 from "@src/components/content/Heading2.astro";
 import WavingHand from "@src/components/WavingHand.svelte";
+import cartoonOllie from "@src/images/ollie-cartoon.webp";
 
 const postsExist = collectionExists("posts");
 ---
 
 <BaseLayout title="Ollie Treend">
-  <div class="max-w-lg mx-auto">
-    <Ollie class="max-w-48" />
-    <Heading1><WavingHand client:idle /> Hi there</Heading1>
-    <p class="text-xl leading-relaxed my-6">
-      My name is Ollie Treend. I’m a software engineer living in London, UK.
-    </p>
-    <p class="text-lg leading-relaxed my-6">
-      I currently work as an SRE at
-      <Link href="https://www.shopify.com">Shopify</Link>. Before that, I served as a
-      tech lead at the Government Digital Service on
-      <Link href="https://www.gov.uk">GOV.UK</Link>, the Department for
-      Education, and the Ministry of Justice.
-    </p>
-    {
-      postsExist && (
-        <p class="text-lg leading-relaxed my-6">
-          Occasionally,
-          <Link href="/posts/">I write things here</Link>.
-        </p>
-      )
-    }
-    <Heading2 class="my-6 mt-10">Where to find me</Heading2>
-    <SocialLinks />
+  <div
+    class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center"
+  >
+    <div class="md:col-span-2">
+      <Heading1><WavingHand client:idle /> Hi there</Heading1>
+      <p class="text-xl leading-relaxed my-6">
+        My name is Ollie Treend. I'm a software engineer living in London, UK.
+      </p>
+      <p class="text-lg leading-relaxed my-6">
+        I currently work as an SRE at
+        <Link href="https://www.shopify.com">Shopify</Link>. Before that, I
+        served as a tech lead at the Government Digital Service on
+        <Link href="https://www.gov.uk">GOV.UK</Link>, the Department for
+        Education, and the Ministry of Justice.
+      </p>
+      {
+        postsExist && (
+          <p class="text-lg leading-relaxed my-6">
+            Occasionally,
+            <Link href="/posts/">I write things here</Link>.
+          </p>
+        )
+      }
+      <Heading2 class="my-6 mt-10">Where to find me</Heading2>
+      <SocialLinks />
+    </div>
+    <Image
+      src={cartoonOllie}
+      alt="Cartoon illustration of Ollie"
+      class="w-full max-w-xs mx-auto"
+    />
   </div>
 </BaseLayout>
