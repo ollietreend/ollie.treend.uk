@@ -1,47 +1,29 @@
-# Astro Starter Kit: Minimal
+# ollie.treend.uk
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Personal website and blog of Ollie Treend, software engineer based in London, UK.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+Built with [Astro](https://astro.build), [Svelte](https://svelte.dev), and [Tailwind CSS](https://tailwindcss.com). Deployed to [Netlify](https://netlify.com).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Tech stack
 
-## 🚀 Project Structure
+- **Framework:** Astro 6 (static site generation)
+- **UI components:** Svelte 5, Tailwind CSS 4
+- **Content:** MDX with the Content Layer API
+- **Syntax highlighting:** Shiki (Monokai theme)
+- **Comments:** [Giscus](https://giscus.app)
+- **Link prefetching:** Quicklink
 
-Inside of your Astro project, you'll see the following folders and files:
+## Commands
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+| Command           | Action                                       |
+| :---------------- | :------------------------------------------- |
+| `npm run dev`     | Start local dev server at `localhost:4321`    |
+| `npm run build`   | Build production site to `dist/`             |
+| `npm run preview` | Preview the production build locally         |
+| `npm run prettier`| Format all files with Prettier               |
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Deployment
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+The site is automatically deployed to Netlify on every push to `main`. Build configuration is in [`netlify.toml`](netlify.toml).
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Node.js is managed via [Mise](https://mise.jdx.dev) (see [`.mise.toml`](.mise.toml)).
