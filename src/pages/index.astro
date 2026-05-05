@@ -7,7 +7,8 @@ import SocialLinks from "@src/components/SocialLinks.astro";
 import Heading1 from "@src/components/content/Heading1.astro";
 import Heading2 from "@src/components/content/Heading2.astro";
 import WavingHand from "@src/components/WavingHand.svelte";
-import cartoonOllie from "@src/images/ollie-cartoon.webp";
+import cartoonOllieLight from "@src/images/ollie-light-mode.png";
+import cartoonOllieDark from "@src/images/ollie-dark-mode.png";
 
 const postsExist = collectionExists("posts");
 ---
@@ -40,9 +41,14 @@ const postsExist = collectionExists("posts");
       <SocialLinks />
     </div>
     <Image
-      src={cartoonOllie}
+      src={cartoonOllieLight}
       alt="Cartoon illustration of Ollie"
-      class="w-full max-w-xs mx-auto"
+      class="w-full max-w-xs mx-auto dark:hidden"
+    />
+    <Image
+      src={cartoonOllieDark}
+      alt="Cartoon illustration of Ollie"
+      class="w-full max-w-xs mx-auto hidden dark:block"
     />
   </div>
 </BaseLayout>
